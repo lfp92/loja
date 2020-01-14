@@ -2,12 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 
 class Cart extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidUpdate() {
-
+    this.props.dispatch({ type: "CALCULATE_TOTAL" });
   }
 
   render() {

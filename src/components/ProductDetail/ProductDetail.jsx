@@ -1,19 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getProduct } from "../../services/products";
-import Cart from "../Cart/Cart";
 
 class ProductDetail extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log(props);
-    this.state = {
-      id: 1
-    };
-  }
-
   componentDidMount() {
-    getProduct(this.state.id)
+    let { id } = this.props.match.params;
+    getProduct(id)
       .then(result => {
         let { item } = result;
         if (item.length === 1) {
@@ -23,6 +15,7 @@ class ProductDetail extends React.Component {
         }
       })
       .catch(error => {
+        console.log(error);
         this.props.dispatch({ type: "SET_ERROR_DETAIL", payload: true });
       });
   }

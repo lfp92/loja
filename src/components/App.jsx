@@ -3,6 +3,7 @@ import Products from "./Products/Products";
 import Cart from "./Cart/Cart";
 
 function App(props) {
+  console.log(props)
   return (
     <div>
       <Header />
