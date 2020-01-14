@@ -1,10 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
+import AddButton from "../Buttons/AddButton";
+import RemoveButton from "../Buttons/RemoveButton";
 
 class Cart extends React.Component {
   componentDidUpdate() {
-    this.props.dispatch({ type: "CALCULATE_TOTAL" });
+    let { cartItems } = this.props;
+    this.props.dispatch({ type: "CALCULATE_TOTAL", payload: [...cartItems] });
   }
+
 
   render() {
     return <div>
@@ -14,6 +18,8 @@ class Cart extends React.Component {
           Quantidade: {item.quantity}
           Preço: {item.price}
           Código: {item.id}
+          <AddButton product={item}>+</AddButton>
+          <RemoveButton product={item}>-</RemoveButton>
         </div>)
       )}
       Total:{this.props.total}</div>;

@@ -1,21 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import AddButton from "../Buttons/AddButton";
 
 class Item extends React.Component {
-  addItem = () => {
-    let { cartItems } = this.props;
-    cartItems.push({ ...this.props.product, quantity: 1 });
-    this.props.dispatch({
-      type: "ADD_ITEM",
-      payload: [...cartItems]
-    });
-  };
+
 
   render() {
     return (
       <div>
-        <input type="checkbox" value="on" />
         <Link to={`/produto/${this.props.product.id}`}>
           <h2>{this.props.product.name}</h2>
         </Link>
@@ -24,7 +17,7 @@ class Item extends React.Component {
         <section>
           Descrição: {this.props.product.description.substr(0, 50)}...
         </section>
-        <button onClick={this.addItem}>ADICIONAR AO CARRINHO</button>
+        <AddButton product={this.props.product}>Adicionar ao carrinho</AddButton>
       </div>
     );
   }

@@ -15,7 +15,7 @@ export default function (state = initialState, action) {
       };
 
     case "CALCULATE_TOTAL":
-      return { ...state, total: state.cartItems.map(x => x.quantity * x.price).reduce((x, y) => x + y) };
+      return { ...state, total: action.payload.length > 0 ? action.payload.map(x => x.quantity * x.price).reduce((x, y) => x + y).toFixed(2) : [] };
     default:
       return state;
   }

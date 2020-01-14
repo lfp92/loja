@@ -1,9 +1,7 @@
-import React from "react";
-import Products from "./Products/Products";
+import React from "react";  
 import Cart from "./Cart/Cart";
 
 function App(props) {
-  console.log(props)
   return (
     <div>
       <Header />
