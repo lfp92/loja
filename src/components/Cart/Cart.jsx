@@ -1,11 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-// import {} from '../services/products';
 
-// listProducts();
 class Cart extends React.Component {
+  componentDidUpdate() {
+    console.log(this.props)
+  }
+
   render() {
-    return <div>{this.props.cartItems.length}</div>;
+    return <div>{this.props.cartItems.length}{this.props.total}</div>;
   }
 }
 
