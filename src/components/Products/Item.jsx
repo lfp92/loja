@@ -10,12 +10,13 @@ class Item extends React.Component {
     };
   }
 
-  handleClick = () => {
+  addItem = () => {
+    let cartItems = this.props.cartItems;
+    cartItems.push(this.state.product);
     this.props.dispatch({
       type: "ADD_ITEM",
-      payload: this.state.product
+      payload: cartItems
     });
-    console.log(this.props)
   };
 
   render() {
@@ -30,28 +31,10 @@ class Item extends React.Component {
         <section>
           Descrição: {this.state.product.description.substr(0, 50)}...
         </section>
-        <button onClick={this.handleClick}>ADICIONAR AO CARRINHO</button>
+        <button onClick={this.addItem}>ADICIONAR AO CARRINHO</button>
       </div>
     );
   }
 }
 
-export function createView(data) {
-  return data.map(item => <Item key={item.id} product={item} />);
-}
-
-export function filterProducts(value, data) {
-  let items = data.filter(item => {
-    if (
-      item.id.toString() === value ||
-      item.name.toUpperCase().split(value.toUpperCase()).length > 1
-    )
-      return item;
-    return null;
-  });
-
-  if (items.length === 0 && value.trim() === "") return createView(data);
-  return createView(items);
-}
-
-Item = connect(store => ({ dispatch: store.cart.dispatch }))(Item);
+export default connect(store => ({ cartItems: store.cart.cartItems, dispatch: store.cart.dispatch }))(Item);

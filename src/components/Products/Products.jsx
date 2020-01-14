@@ -1,11 +1,11 @@
 import React from "react";
 import { listProducts } from "../../services/products";
 import { connect } from "react-redux";
-import { createView, filterProducts } from "./Item";
+import Item from "./Item";
 
-class Products extends React.Component {
+class Products extends React.Component {  
+
   componentDidMount() {
-    console.log(this.props);
     listProducts()
       .then(results => {
         let { data } = results;
@@ -36,10 +36,27 @@ class Products extends React.Component {
   }
 }
 
+
+function createView(data) {
+  return data.map(item => <Item key={item.id} product={item} />);
+}
+
+export function filterProducts(value, data) {
+  let items = data.filter(item => {
+    if (item.id.toString() === value || item.name.toUpperCase().split(value.toUpperCase()).length > 1)
+      return item;
+    return null;
+  });
+
+  if (items.length === 0 && value.trim() === "") return createView(data);
+  return createView(items);
+}
+
+
 export default connect(store => {
   return {
     list: store.products.list,
     data: store.products.data,
     cart: store.cart
-  };
+  }
 })(Products);
