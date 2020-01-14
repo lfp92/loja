@@ -2,12 +2,25 @@ import React from "react";
 import { connect } from "react-redux";
 
 class Cart extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   componentDidUpdate() {
-    console.log(this.props)
+
   }
 
   render() {
-    return <div>{this.props.cartItems.length}{this.props.total}</div>;
+    return <div>
+      {this.props.cartItems.map(item => (
+        <div key={item.id}>
+          <h2>Nome: {item.name}</h2>
+          Quantidade: {item.quantity}
+          Preço: {item.price}
+          Código: {item.id}
+        </div>)
+      )}
+      Total:{this.props.total}</div>;
   }
 }
 

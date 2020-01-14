@@ -2,12 +2,12 @@ import React from "react";
 import Products from "./Products/Products";
 import Cart from "./Cart/Cart";
 
-function App() {
+function App(props) {
   return (
     <div>
       <Header />
       <main>
-        <Products />
+        {props.children}
       </main>
       <Footer />
     </div>

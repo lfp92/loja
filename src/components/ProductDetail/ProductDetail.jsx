@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getProduct } from "../../services/products";
+import Cart from "../Cart/Cart";
 
 class ProductDetail extends React.Component {
   constructor(props) {
@@ -27,18 +28,21 @@ class ProductDetail extends React.Component {
   }
 
   render() {
-    return this.props.error ? (
-      <div>
-        <h1>Produto não encontrado</h1>
-      </div>
-    ) : (
-      <main>
-        <h1>Nome: {this.props.product.name}</h1>
-        <h2>Código: {this.props.product.id}</h2>
-        <section>Preço: {this.props.product.price}</section>
-        <section>Descrição: {this.props.product.description}</section>
-      </main>
-    );
+    return <div>
+      {this.props.error ? (
+        <div>
+          <h1>Produto não encontrado</h1>
+        </div>
+      ) : (
+          <main>
+            <h1>Nome: {this.props.product.name}</h1>
+            <h2>Código: {this.props.product.id}</h2>
+            <section>Preço: {this.props.product.price}</section>
+            <section>Descrição: {this.props.product.description}</section>
+          </main>
+        )
+      }
+    </div>
   }
 }
 

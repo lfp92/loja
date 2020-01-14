@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 import ProductDetail from "./components/ProductDetail/ProductDetail";
 import App from "./components/App";
+import Products from "./components/Products/Products";
 
 ReactDOM.render(
   <div>
@@ -13,13 +14,14 @@ ReactDOM.render(
       <Router>
         <Switch>
           <Route exact path="/">
-            <App />
+            <App>
+              <Products />
+            </App>
           </Route>
           <Route path="/produto/:id">
-            <ProductDetail />
-          </Route>
-          <Route path="/produto/:name">
-            <ProductDetail />
+            <App>
+              <ProductDetail />
+            </App>
           </Route>
         </Switch>
       </Router>
