@@ -16,17 +16,19 @@ class Cart extends React.Component {
     return (
       <Div>
         <DivQtdeItems>Carrinho: {this.props.cartItems.length}</DivQtdeItems>
-        {this.props.cartItems.map(item => (
-          <div key={item.id}>
-            <h2>Nome: {item.name}</h2>
+        <DivCarItems>
+          {this.props.cartItems.map(item => (
+            <div key={item.id}>
+              <h2>Nome: {item.name}</h2>
 
-            Quantidade: {item.quantity}
-            Preço: {item.price}
-            Código: {item.id}
-            <AddButton product={item}>+</AddButton>
-            <RemoveButton product={item}>-</RemoveButton>
-          </div>))
-        }
+              Quantidade: {item.quantity}
+              Preço: {item.price}
+              Código: {item.id}
+              <AddButton product={item}>+</AddButton>
+              <RemoveButton product={item}>-</RemoveButton>
+            </div>))
+          }
+        </DivCarItems>
         <DivTotal>
           Total: R$ {this.props.total}
         </DivTotal>
@@ -56,7 +58,14 @@ const DivTotal = styled.div`
 
 const Div = styled.div`
   align-items: center;
+  font-size: 1.2rem;
   display: flex;
   height: 100%;
   justify-content:space-between;
 ` 
+
+const DivCarItems = styled.div`
+  @media (max-width: 728px) {
+    display: none;
+  }
+`
