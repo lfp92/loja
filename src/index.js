@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 import ProductDetail from "./components/ProductDetail/ProductDetail";
 import App from "./components/App";
+import './reset.css';
 import Products from "./components/Products/Products";
 
 ReactDOM.render(

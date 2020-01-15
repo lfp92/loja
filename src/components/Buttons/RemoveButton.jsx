@@ -5,10 +5,17 @@ class RemoveButton extends React.Component {
   removeItem = () => {
     let { cartItems } = this.props;
     cartItems = removeItemsFromCart(cartItems, this.props.product);
+    // if (cartItems.length > 0) {
     this.props.dispatch({
-      type: "REMOVE_ITEM",
+      type: "UPDATE_ITEM_LIST",
       payload: [...cartItems]
     });
+    // } else {
+    //   this.props.dispatch({
+    //     type: "RESET_LIST"
+    //   });
+    // }
+
   };
 
   render() {
@@ -19,25 +26,12 @@ class RemoveButton extends React.Component {
 export default connect(store => ({ cartItems: store.cart.cartItems }))(RemoveButton);
 
 function removeItemsFromCart(cartItems, product) {
-  cartItems = cartItems.map(x => {
+  let items = cartItems.map(x => {
     if (x.id === product.id) {
-      if (x.quantity === 1)
-        return null;
-      x.quantity = - 1;
+      x.quantity -= 1;
     }
     return x;
-  }).filter(x => x !== null);
-
-  // let items = cartItems.filter(x => x.id === product.id);
-  // if (items.length === 1) {
-  //   cartItems.push({ ...product, quantity: 1 });
-  // } else {
-  //   cartItems.map(x => {
-  //     if (x.id === product.id) {
-  //       x.quantity += 1;
-  //     }
-  //     return x;
-  //   })
-  // }
-  return cartItems;
+  });
+  items = items.filter(x => (x.id !== product.id) || (x.id === product.id && x.quantity > 0));
+  return items;
 }

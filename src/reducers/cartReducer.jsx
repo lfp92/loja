@@ -2,20 +2,18 @@ const initialState = { cartItems: [], total: 0.0 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case "ADD_ITEM":
+    case "UPDATE_ITEM_LIST":
       return {
         ...state,
         cartItems: action.payload
       };
 
-    case "REMOVE_ITEM":
-      return {
-        ...state,
-        cartItems: action.payload
-      };
+    case "SET_TOTAL":
+      return { ...state, total: action.payload };
 
-    case "CALCULATE_TOTAL":
-      return { ...state, total: action.payload.length > 0 ? action.payload.map(x => x.quantity * x.price).reduce((x, y) => x + y).toFixed(2) : [] };
+    case "RESET_LIST":
+      return { cartItems: [], total: 0 };
+
     default:
       return state;
   }

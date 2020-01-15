@@ -6,7 +6,7 @@ class AddButton extends React.Component {
     let { cartItems } = this.props;
     cartItems = addItemsToCart(cartItems, this.props.product);
     this.props.dispatch({
-      type: "ADD_ITEM",
+      type: "UPDATE_ITEM_LIST",
       payload: [...cartItems]
     });
   };
