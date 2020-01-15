@@ -1,4 +1,5 @@
-body, div {
+body, div, a {
     font-family: 'PT Sans', 'Roboto';
     margin: 0px;
+    text-decoration: none;
 }

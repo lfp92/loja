@@ -36,7 +36,7 @@ const Main = styled.main`
   top: 10vh;
   position: relative;
   color: #ffffff;
-  background-color: #222222;
+  background-color: gray;
   text-decoration: none;
 `
 
