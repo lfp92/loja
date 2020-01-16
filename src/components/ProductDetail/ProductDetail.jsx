@@ -48,12 +48,12 @@ export default connect(store => ({
 
 const Div = styled.div`
   font-size: 1rem;
-  padding: 0px 10px 0px 10px;
-  overflow: hidden;
   height: 90vh;
+  overflow: hidden;
+  padding: 0px 10px 0px 10px;
 `
 const Section = styled.section`
-  margin: 5px 0px 5px 0px;
   font-size: .85rem;
+  margin: 5px 0px 5px 0px;
   text-align: justify;
 `

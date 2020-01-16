@@ -34,12 +34,12 @@ const Head = connect(store => ({ expanded: store.cart.expanded }))(
 `)
 
 const Main = styled.main`
-  padding-top: 2vw;
-  top: 10vh;
-  position: relative;
-  color: #ffffff;
   background-color: #222222;
+  color: #ffffff;
+  padding-top: 2vw;
+  position: relative;
   text-decoration: none;
+  top: 10vh;
 `
 
 const Footer = styled.footer`

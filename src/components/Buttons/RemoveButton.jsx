@@ -6,7 +6,6 @@ class RemoveButton extends React.Component {
   removeItem = () => {
     let { cartItems } = this.props;
     cartItems = removeItemsFromCart(cartItems, this.props.product);
-    // if (cartItems.length > 0) {
     this.props.dispatch({
       type: "UPDATE_ITEM_LIST",
       payload: [...cartItems]

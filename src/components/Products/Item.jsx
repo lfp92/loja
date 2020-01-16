@@ -6,7 +6,6 @@ import styled from "styled-components";
 
 class Item extends React.Component {
 
-
   render() {
     return (
       <Div>
@@ -35,11 +34,10 @@ export default connect(store => ({ cartItems: store.cart.cartItems }))(Item);
 
 const H2Link = styled.h2`
   background-color: #fe7c02;
-  ${'' /* width: 100%; */}
   color: white;
   font-size: 1.2rem;
-  padding: 10px;
   margin-top: 0px;
+  padding: 10px;
 `
 const Div = styled.div`
   background-color: #fefefe;
