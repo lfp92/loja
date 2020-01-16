@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import {Button} from "./ButtonTemplate"
 
 class RemoveButton extends React.Component {
   removeItem = () => {
@@ -10,16 +11,10 @@ class RemoveButton extends React.Component {
       type: "UPDATE_ITEM_LIST",
       payload: [...cartItems]
     });
-    // } else {
-    //   this.props.dispatch({
-    //     type: "RESET_LIST"
-    //   });
-    // }
-
   };
 
   render() {
-    return <button onClick={this.removeItem}>{this.props.children}</button>
+    return <Button onClick={this.removeItem}>{this.props.children}</Button>
   }
 }
 

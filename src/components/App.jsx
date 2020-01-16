@@ -1,6 +1,7 @@
 import React from "react";
 import Cart from "./Cart/Cart";
 import styled from 'styled-components';
+import { connect } from "react-redux";
 
 function App(props) {
   return (
@@ -18,28 +19,29 @@ function App(props) {
 
 export default App;
 
-const Head = styled.header`
-@media (max-width: 728px) {
-} 
-  align-items: center;
-  background-color: #ff6500;
-  color: #ffffff;
-  font-size: 1.5rem;
-  height: 10vh;
-  margin: 0px;
-  position: fixed;
-  width: 100%;
-  z-index: 1;
-`
+const Head = connect(store => ({ expanded: store.cart.expanded }))(
+  styled.header`
+      align-items: ${(props => props.expanded ? 'flex-start' : 'center')};
+      background-color: #fe7c02;
+      color: #ffffff;
+      font-size: 1.5rem;
+      height: ${(props => props.expanded ? '100vh' : '10vh')};
+      overflow: ${(props => props.expanded ? 'false' : 'true')};
+      margin: 0px;
+      position: fixed;
+      width: 100%;
+      z-index: 1;
+`)
+
 const Main = styled.main`
   padding-top: 2vw;
   top: 10vh;
   position: relative;
   color: #ffffff;
-  background-color: gray;
+  background-color: #222222;
   text-decoration: none;
 `
 
 const Footer = styled.footer`
 
-` 
+  ` 

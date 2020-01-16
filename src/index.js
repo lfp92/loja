@@ -12,15 +12,15 @@ import Products from "./components/Products/Products";
 ReactDOM.render(
   <div>
     <Provider store={store}>
-      <App>
-        <Router>
+      <Router>
+        <App>
           <Switch>
             <Route exact path="/" component={Products}>
             </Route>
             <Route path="/produto/:id" component={ProductDetail} />
           </Switch>
-        </Router>
-      </App>
+        </App>
+      </Router>
     </Provider>
   </div>,
   document.getElementById("root")

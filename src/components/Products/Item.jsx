@@ -15,12 +15,17 @@ class Item extends React.Component {
             {this.props.product.name}
           </H2Link>
         </Link>
-        <h3>Código: {this.props.product.id}</h3>
-        <h4>R$ {this.props.product.price}</h4>
-        <section>
-          Descrição: {this.props.product.description.substr(0, 50)}...
+        <DivAux>
+          <h3>Código: {this.props.product.id}</h3>
+          <h4>R$ {this.props.product.price}</h4>
+          <section>
+            Descrição: {this.props.product.description.substr(0, 50)}...
         </section>
-        <AddButton product={this.props.product}>Adicionar ao carrinho</AddButton>
+          <DivCenter>
+            <AddButton product={this.props.product}>Adicionar ao carrinho</AddButton>
+          </DivCenter>
+        </DivAux>
+
       </Div>
     );
   }
@@ -29,7 +34,7 @@ class Item extends React.Component {
 export default connect(store => ({ cartItems: store.cart.cartItems }))(Item);
 
 const H2Link = styled.h2`
-  background-color: blue;
+  background-color: #fe7c02;
   ${'' /* width: 100%; */}
   color: white;
   font-size: 1.2rem;
@@ -37,8 +42,17 @@ const H2Link = styled.h2`
   margin-top: 0px;
 `
 const Div = styled.div`
-  background-color: #222222;
+  background-color: #fefefe;
   border: 1px solid black;
   border-radius: 2px;
   margin: 10px;
+`
+const DivAux = styled.div`
+  color: #222222;
+  padding: 0px 10px 10px 10px; 
+`
+const DivCenter = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 ` 

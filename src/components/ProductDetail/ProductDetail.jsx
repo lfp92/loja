@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getProduct } from "../../services/products";
+import styled from "styled-components"
 
 class ProductDetail extends React.Component {
   componentDidMount() {
@@ -21,21 +22,21 @@ class ProductDetail extends React.Component {
   }
 
   render() {
-    return <div>
-      {this.props.error ? (
-        <div>
-          <h1>Produto não encontrado</h1>
-        </div>
+    return (
+      this.props.error ? (
+        <Div>
+          <h3>Produto não encontrado</h3>
+        </Div>
       ) : (
-          <main>
-            <h1>Nome: {this.props.product.name}</h1>
-            <h2>Código: {this.props.product.id}</h2>
-            <section>Preço: {this.props.product.price}</section>
-            <section>Descrição: {this.props.product.description}</section>
-          </main>
+          <Div>
+            <h3>{this.props.product.name}</h3>
+            <h4>Código: {this.props.product.id}</h4>
+            <h4>R$ {this.props.product.price}</h4>
+            <h5>Descrição:</h5>
+            <Section>{this.props.product.description}</Section>
+          </Div>
         )
-      }
-    </div>
+    );
   }
 }
 
@@ -44,3 +45,15 @@ export default connect(store => ({
   error: store.productDetail.error,
   cart: store.cart
 }))(ProductDetail);
+
+const Div = styled.div`
+  font-size: 1rem;
+  padding: 0px 10px 0px 10px;
+  overflow: hidden;
+  height: 90vh;
+`
+const Section = styled.section`
+  margin: 5px 0px 5px 0px;
+  font-size: .85rem;
+  text-align: justify;
+`

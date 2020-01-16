@@ -1,20 +1,21 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Button } from "./ButtonTemplate";
 
 class AddButton extends React.Component {
-  addItem = () => {
-    let { cartItems } = this.props;
-    cartItems = addItemsToCart(cartItems, this.props.product);
-    this.props.dispatch({
-      type: "UPDATE_ITEM_LIST",
-      payload: [...cartItems]
-    });
-  };
+    addItem = () => {
+      let { cartItems } = this.props;
+      cartItems = addItemsToCart(cartItems, this.props.product);
+      this.props.dispatch({
+        type: "UPDATE_ITEM_LIST",
+        payload: [...cartItems]
+      });
+    };
 
-  render() {
-    return <button onClick={this.addItem}>{this.props.children}</button>
+    render() {
+      return <Button onClick={this.addItem}>{this.props.children}</Button>
+    }
   }
-}
 
 export default connect(store => ({ cartItems: store.cart.cartItems }))(AddButton);
 
