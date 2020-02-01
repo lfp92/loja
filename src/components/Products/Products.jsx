@@ -19,6 +19,10 @@ class Products extends React.Component {
   render() {
     return (
       <div>
+
+
+
+        
         Filtrar resultados
         <input
           type="text"
