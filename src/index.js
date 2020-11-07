@@ -5,7 +5,7 @@ import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 import store from "./store";
 import ProductDetail from "./components/ProductDetail/ProductDetail";
-import App from "./components/App";
+import App from "./components/App/App";
 import './reset.css';
 import Products from "./components/Products/Products";
 
