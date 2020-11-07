@@ -1,6 +1,8 @@
 const initialState = { list: [], data: [], searchString: "" };
 
-export default function(state = initialState, action) {
+export default productsReducer;
+
+function productsReducer (state = initialState, action = null) {
   switch (action.type) {
     case "FILTER_PRODUCTS":
       return { ...state, searchString: action.payload };
