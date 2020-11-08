@@ -1,31 +1,15 @@
+import data from './mock';
+
 async function listProducts() {
-  try {
-    let result = await fetch(`${process.env.REACT_APP_SERVER_HOST}/products`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json"
-      }
-    });
-    return result.json();
-  } catch (error) {
-    throw error;
-  }
+  return data;
 }
 
 async function getProduct(id = 0) {
-  try {
-    let result = await fetch(
-      `${process.env.REACT_APP_SERVER_HOST}/getProduct?id=${id}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json"
-        }
-      }
-    );
-    return result.json();
-  } catch (error) {
-    throw error;
+  const result = data.find((product) => product.id === id.toString());
+  if (result) {
+    return result;
+  } else {
+    throw new Error('Produto não encontrado');
   }
 }
 
