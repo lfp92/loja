@@ -1,18 +1,21 @@
 import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { listProducts } from '../../services/products';
 import Item from './Item';
 
 function Products(props) {
+  const dispatch = useDispatch();
+  const products = useSelector((store) => store.products);
+
   useEffect(() => {
     listProducts()
       .then((results) => {
-        let { data } = results;
-        props.dispatch({ type: 'SET_DATA', payload: data });
-        let items = createView(data);
-        props.dispatch({ type: 'LIST_PRODUCTS', payload: items });
+        let data = results;
+        dispatch({ type: 'SET_DATA', payload: data });
+        dispatch({ type: 'LIST_PRODUCTS', payload: createView(data) });
       })
       .catch((error) => console.log(error));
-  });
+  }, [products.list, dispatch]);
 
   return (
     <div>
@@ -21,19 +24,19 @@ function Products(props) {
         type="text"
         placeholder="Digite o código ou nome do produto"
         onChange={(e) =>
-          props.dispatch({
+          dispatch({
             type: 'LIST_PRODUCTS',
             payload: filterProducts(e.target.value, props.data),
           })
         }
       ></input>
-      <section id="listaProdutos">{/* {props.list} */}</section>
+      <section id="listaProdutos">{createView(products.list)}</section>
     </div>
   );
 }
 
 function createView(data) {
-  return data.map((item) => <Item key={item.id} product={item} />);
+  return data.map((item, index) => <Item key={index} product={item} />);
 }
 
 export function filterProducts(value, data) {
@@ -51,11 +54,3 @@ export function filterProducts(value, data) {
 }
 
 export default Products;
-
-// export default connect(store => {
-//   return {
-//     list: store.products.list,
-//     data: store.products.data,
-//     cart: store.cart
-//   }
-// })(Products);
