@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import renderer from 'react-test-renderer';
 import Products from './Products';
 import store from '../../store';
+import { BrowserRouter } from 'react-router-dom';
 
 const data = [
   {
@@ -58,7 +59,9 @@ describe('Componente Products', () => {
   beforeAll(() => {
     component = renderer.create(
       <Provider store={store}>
-        <Products list={data} />
+        <BrowserRouter>
+          <Products list={data} />
+        </BrowserRouter>
       </Provider>
     );
   });

@@ -24,8 +24,8 @@ const Head = styled.header`
       background-color: #fe7c02;
       color: #ffffff;
       font-size: 1.5rem;
-      height: 100vh;
-      overflow: auto;
+      height: 10vh;
+      overflow: hidden;
       margin: 0px;
       position: fixed;
       width: 100%;
