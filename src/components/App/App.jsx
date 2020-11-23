@@ -19,19 +19,18 @@ function App(props) {
 
 export default App;
 
-const Head = connect(store => ({ expanded: store.cart.expanded }))(
-  styled.header`
-      align-items: ${(props => props.expanded ? 'flex-start' : 'center')};
+const Head = styled.header`
+      align-items: flex-start;
       background-color: #fe7c02;
       color: #ffffff;
       font-size: 1.5rem;
-      height: ${(props => props.expanded ? '100vh' : '10vh')};
-      overflow: ${(props => props.expanded ? 'false' : 'true')};
+      height: 100vh;
+      overflow: auto;
       margin: 0px;
       position: fixed;
       width: 100%;
       z-index: 1;
-`)
+`;
 
 const Main = styled.main`
   background-color: #222222;
