@@ -15,7 +15,7 @@ function Products(props) {
         dispatch({ type: 'LIST_PRODUCTS', payload: createView(data) });
       })
       .catch((error) => console.log(error));
-  }, [products.list, dispatch]);
+  }, [products.data, dispatch]);
 
   return (
     <div>
