@@ -19,7 +19,7 @@ function Cart(props) {
             .toFixed(2)
         : 0;
     dispatch({ type: 'SET_TOTAL', payload: total });
-  }, [props, dispatch]);
+  }, [props, dispatch, cart]);
 
   return (
     <Div>

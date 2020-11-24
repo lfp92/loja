@@ -22,7 +22,7 @@ function ProductDetail(props) {
       .catch((error) => {
         dispatch({ type: 'SET_ERROR_DETAIL', payload: true });
       });
-  }, []);
+  }, [props.match.params, dispatch]);
 
   return props.error ? (
     <Div>
