@@ -33,7 +33,7 @@ function Cart(props) {
             ? cart.cartItems.map((x) => x.quantity).reduce((x, y) => x + y)
             : 0}
         </DivQtdeItems>
-        <DivTotal>R$ {props.total}</DivTotal>
+        <DivTotal>R$ {cart.total}</DivTotal>
         <Button
           onClick={() =>
             dispatch({
