@@ -22,51 +22,46 @@ function Cart(props) {
   }, [props, dispatch, cart]);
 
   return (
-    <Div>
-      <DivAux>
+    <div>
+      <div>
         <Link to={'/'}>
-          <Button>{`<`}</Button>
+          <button>{`<`}</button>
         </Link>
-        <DivQtdeItems>
+        <div>
           Itens:{' '}
           {cart.cartItems.length > 0
             ? cart.cartItems.map((x) => x.quantity).reduce((x, y) => x + y)
             : 0}
-        </DivQtdeItems>
-        <DivTotal>R$ {cart.total}</DivTotal>
-        <Button
-          onClick={() =>
-            dispatch({
-              type: props.expanded ? 'COLLAPSE_CART' : 'EXPAND_CART',
-            })
-          }
-        >
-          <img
-            alt="Ícone do carrinho de compras"
-            width="20px"
-            height="20px"
-            src="https://image.flaticon.com/icons/png/512/126/126510.png"
-          />
-        </Button>
-      </DivAux>
+        </div>
+        <div>R$ {cart.total}</div>
+        <button onClick={() => handleClick()}>
+          <IconeCarrinho />
+        </button>
+      </div>
       {props.expanded
         ? cart.cartItems.map((item) => (
-            <DivCarItems>
+            <div>
               <div key={item.id}>
                 <h4>{item.name}</h4>
-                <Section>Quantidade: {item.quantity}</Section>
-                <Section> R$ {item.price} (por unidade)</Section>
-                <Section>Código: {item.id}</Section>
-                <Section>
-                  <AddButton product={item}>+</AddButton>
-                  <RemoveButton product={item}>-</RemoveButton>
-                </Section>
+                <section>Quantidade: {item.quantity}</section>
+                <section> R$ {item.price} (por unidade)</section>
+                <section>Código: {item.id}</section>
+                <section>
+                  <button product={item}>+</button>
+                  <button product={item}>-</button>
+                </section>
               </div>
-            </DivCarItems>
+            </div>
           ))
         : false}
-    </Div>
+    </div>
   );
+
+  function handleClick() {
+    return dispatch({
+      type: props.expanded ? 'COLLAPSE_CART' : 'EXPAND_CART',
+    });
+  }
 }
 
 export default Cart;
@@ -119,3 +114,13 @@ const Section = styled.section`
   font-size: 1rem;
   margin: 5px;
 `;
+function IconeCarrinho() {
+  return (
+    <img
+      alt="Ícone do carrinho de compras"
+      width="20px"
+      height="20px"
+      src="https://image.flaticon.com/icons/png/512/126/126510.png"
+    />
+  );
+}

@@ -1,30 +1,35 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AddButton from '../Buttons/AddButton';
-import styled from 'styled-components';
+//import styled from 'styled-components';
 
-function Item(props) {
+function Item({ product }) {
+  function addProdutoNoCarrinho(produto) {
+    console.log(produto);
+  }
+
   return (
-    <Div>
-      <Link to={`/produto/${props.product.id}`}>
-        <H2Link>{props.product.name}</H2Link>
+    <div>
+      <Link to={`/produto/${product.id}`}>
+        <h2>{product.name}</h2>
       </Link>
-      <DivAux>
-        <h3>Código: {props.product.id}</h3>
-        <h4>R$ {props.product.price}</h4>
-        <section>
-          Descrição: {props.product.description.substr(0, 50)}...
-        </section>
-        <DivCenter>
-          <AddButton product={props.product}>Adicionar ao carrinho</AddButton>
-        </DivCenter>
-      </DivAux>
-    </Div>
+      <div>
+        <h3>Código: {product.id}</h3>
+        <h4>R$ {product.price}</h4>
+        <section>Descrição: {product.description.substr(0, 50)}...</section>
+        <div>
+          <button onClick={() => addProdutoNoCarrinho(product)}>
+            Adicionar ao carrinho
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }
 
 export default Item;
 
+/*
 const H2Link = styled.h2`
   background-color: #fe7c02;
   color: white;
@@ -47,3 +52,4 @@ const DivCenter = styled.div`
   justify-content: center;
   margin-top: 10px;
 `;
+*/
