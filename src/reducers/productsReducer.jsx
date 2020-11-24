@@ -1,14 +1,5 @@
 const initialState = {
-  list: [
-    {
-      id: '2',
-      name:
-        'Processador AMD Ryzen 5 1600, Cache 19MB, 3.2GHz (3.6GHz Max Turbo), AM4 - YD1600BBAFBOX',
-      price: '764.59',
-      description:
-        'Com esse processador inovador e incrível você desfruta ao máximo o verdadeiro potencial do seu computador e desfruta da mais pura velocidade. Maximize o seu desempenho seja trabalhando, jogando, navegando ou assistindo o seu filme preferido, com esse processador você pode tudo!',
-    },
-  ],
+  list: [],
   data: [],
   searchString: '',
 };

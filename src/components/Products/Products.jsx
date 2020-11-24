@@ -30,7 +30,7 @@ function Products(props) {
           })
         }
       ></input>
-      <section id="listaProdutos">{createView(products.list)}</section>
+      <section id="listaProdutos">{products.list}</section>
     </div>
   );
 }

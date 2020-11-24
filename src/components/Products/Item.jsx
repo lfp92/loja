@@ -18,7 +18,7 @@ class Item extends React.Component {
           <h3>Código: {this.props.product.id}</h3>
           <h4>R$ {this.props.product.price}</h4>
           <section>
-            Descrição: {this.props.product.description}...
+            Descrição: {this.props.product.description.substr(0, 50)}...
         </section>
           <DivCenter>
             <AddButton product={this.props.product}>Adicionar ao carrinho</AddButton>
