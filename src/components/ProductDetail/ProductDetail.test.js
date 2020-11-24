@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import renderer from 'react-test-renderer';
 import ProductDetail from './ProductDetail';
 import store from '../../store';
+import { BrowserRouter } from 'react-router-dom';
 
 describe('ProductDetail component', () => {
   const match = {
@@ -23,7 +24,9 @@ describe('ProductDetail component', () => {
   test('Componente deve ser criado', () => {
     const component = renderer.create(
       <Provider store={store}>
-        <ProductDetail match={match} product={produto} />
+        <BrowserRouter>
+          <ProductDetail match={match} product={produto} />
+        </BrowserRouter>
       </Provider>
     );
     expect(component).toBeTruthy();
