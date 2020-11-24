@@ -1,13 +1,16 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import AddButton from '../Buttons/AddButton';
 import RemoveButton from '../Buttons/RemoveButton';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 function Cart(props) {
+  const dispatch = useDispatch();
+  const cart = useSelector((store) => store.cart);
+
   React.useEffect(() => {
-    let { cartItems } = props;
+    let { cartItems } = cart;
     let total =
       cartItems.length > 0
         ? cartItems
@@ -15,8 +18,8 @@ function Cart(props) {
             .reduce((x, y) => x + y)
             .toFixed(2)
         : 0;
-    props.dispatch({ type: 'SET_TOTAL', payload: total });
-  }, []);
+    dispatch({ type: 'SET_TOTAL', payload: total });
+  }, [props, dispatch]);
 
   return (
     <Div>
@@ -26,14 +29,14 @@ function Cart(props) {
         </Link>
         <DivQtdeItems>
           Itens:{' '}
-          {props.cartItems.length > 0
-            ? props.cartItems.map((x) => x.quantity).reduce((x, y) => x + y)
+          {cart.cartItems.length > 0
+            ? cart.cartItems.map((x) => x.quantity).reduce((x, y) => x + y)
             : 0}
         </DivQtdeItems>
         <DivTotal>R$ {props.total}</DivTotal>
         <Button
           onClick={() =>
-            props.dispatch({
+            dispatch({
               type: props.expanded ? 'COLLAPSE_CART' : 'EXPAND_CART',
             })
           }
@@ -47,7 +50,7 @@ function Cart(props) {
         </Button>
       </DivAux>
       {props.expanded
-        ? props.cartItems.map((item) => (
+        ? cart.cartItems.map((item) => (
             <DivCarItems>
               <div key={item.id}>
                 <h4>{item.name}</h4>
@@ -66,26 +69,23 @@ function Cart(props) {
   );
 }
 
-export default connect((store) => ({
-  cartItems: store.cart.cartItems,
-  total: store.cart.total,
-  expanded: store.cart.expanded,
-}))(Cart);
+export default Cart;
 
 const DivQtdeItems = styled.div`
-  margin-left: 10px;
+  /* margin-left: 10px;
   margin-right: 10px;
-  width: fit-content;
+  width: fit-content; */
 `;
+
 const DivTotal = styled.div`
-  align-items: ${(props) => (props.expanded ? 'center' : 'flex-start')};
+  align-items: center;
   left: 0px;
   margin-left: 10px;
   margin-right: 10px;
   width: fit-content;
 `;
 
-const Div = connect((store) => ({ expanded: store.cart.expanded }))(styled.div`
+const Div = styled.div`
   align-items: flex-start;
   display: flex;
   flex-direction: column;
@@ -96,16 +96,14 @@ const Div = connect((store) => ({ expanded: store.cart.expanded }))(styled.div`
   height: 100%;
   justify-content: flex-start;
   margin: 1vh;
-`);
+`;
 
-const DivCarItems = connect((store) => ({
-  expanded: store.cart.expanded,
-}))(styled.div`
+const DivCarItems = styled.div`
   background-color: #fefefe;
   border: 1px solid #222222;
   color: #222222;
   padding: 0px 10px 10px 10px;
-`);
+`;
 
 const DivAux = styled.div`
   display: flex;

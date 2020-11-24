@@ -1,7 +1,7 @@
-import React from "react";
-import Cart from "../Cart/Cart";
+import React from 'react';
+import Cart from '../Cart/Cart';
 import styled from 'styled-components';
-import { connect } from "react-redux";
+import Products from '../Products/Products';
 
 function App(props) {
   return (
@@ -10,7 +10,7 @@ function App(props) {
         <Cart />
       </Head>
       <Main>
-        {props.children}
+        <Products />
       </Main>
       <Footer />
     </div>
@@ -20,16 +20,16 @@ function App(props) {
 export default App;
 
 const Head = styled.header`
-      align-items: flex-start;
-      background-color: #fe7c02;
-      color: #ffffff;
-      font-size: 1.5rem;
-      height: 10vh;
-      overflow: hidden;
-      margin: 0px;
-      position: fixed;
-      width: 100%;
-      z-index: 1;
+  align-items: flex-start;
+  background-color: #fe7c02;
+  color: #ffffff;
+  font-size: 1.5rem;
+  height: 10vh;
+  overflow: hidden;
+  margin: 0px;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
 `;
 
 const Main = styled.main`
@@ -39,8 +39,6 @@ const Main = styled.main`
   position: relative;
   text-decoration: none;
   top: 10vh;
-`
+`;
 
-const Footer = styled.footer`
-
-  ` 
+const Footer = styled.footer``;

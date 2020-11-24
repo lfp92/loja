@@ -1,22 +1,26 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import { getProduct } from '../../services/products';
 import styled from 'styled-components';
+import Cart from '../Cart/Cart';
 
 function ProductDetail(props) {
+  const product = useSelector((store) => store.productDetail.product);
+  const dispatch = useDispatch();
+
   React.useEffect(() => {
     let { id } = props.match.params;
     getProduct(id)
       .then((result) => {
-        let { item } = result;
-        if (item.length === 1) {
-          props.dispatch({ type: 'SET_DETAIL', payload: item[0] });
+        let item = result;
+        if (item) {
+          dispatch({ type: 'SET_DETAIL', payload: item });
         } else {
           throw Error('Produto não encontrado');
         }
       })
       .catch((error) => {
-        props.dispatch({ type: 'SET_ERROR_DETAIL', payload: true });
+        dispatch({ type: 'SET_ERROR_DETAIL', payload: true });
       });
   }, []);
 
@@ -25,13 +29,16 @@ function ProductDetail(props) {
       <h3>Produto não encontrado</h3>
     </Div>
   ) : (
-    <Div>
-      <h3>{props.product.name}</h3>
-      <h4>Código: {props.product.id}</h4>
-      <h4>R$ {props.product.price}</h4>
-      <h5>Descrição:</h5>
-      <Section>{props.product.description}</Section>
-    </Div>
+    <>
+      <Cart />
+      <Div>
+        <h3>{product.name}</h3>
+        <h4>Código: {product.id}</h4>
+        <h4>R$ {product.price}</h4>
+        <h5>Descrição:</h5>
+        <Section>{product.description}</Section>
+      </Div>
+    </>
   );
 }
 
