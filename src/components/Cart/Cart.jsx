@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-function Cart(props) {
+function Cart() {
   const cart = useSelector((store) => store.cart);
   const { total, produtos } = cart;
 
@@ -14,7 +14,7 @@ function Cart(props) {
         </Link>
         <div>Itens: {produtos.length}</div>
         <div>R$ {total}</div>
-        <button onClick={() => handleClick()}>
+        <button onClick={() => exibirItensDoCarrinho()}>
           <IconeCarrinho />
         </button>
       </div>
@@ -25,23 +25,6 @@ function Cart(props) {
       </section>
     </section>
   );
-
-  function ProdutosCarrinho({ produto }) {
-    return (
-      <div>
-        <div>
-          <h4>{produto.name}</h4>
-          <section>Quantidade: {produto.quantity}</section>
-          <section> R$ {produto.price} (por unidade)</section>
-          <section>Código: {produto.id}</section>
-          <section>
-            <button product={produto}>+</button>
-            <button product={produto}>-</button>
-          </section>
-        </div>
-      </div>
-    );
-  }
 
   // function calculaTotalCarrinho(cartItems) {
   //   return cartItems.length > 0
@@ -62,12 +45,29 @@ function Cart(props) {
   //     : 0;
   // }
 
-  function handleClick() {
+  function exibirItensDoCarrinho() {
     console.log('handleClick Cart.jsx');
   }
 }
 
 export default Cart;
+
+function ProdutosCarrinho({ produto }) {
+  return (
+    <div>
+      <div>
+        <h4>{produto.name}</h4>
+        <section>Quantidade: {produto.quantity}</section>
+        <section> R$ {produto.price} (por unidade)</section>
+        <section>Código: {produto.id}</section>
+        <section>
+          <button product={produto}>+</button>
+          <button product={produto}>-</button>
+        </section>
+      </div>
+    </div>
+  );
+}
 
 function IconeCarrinho() {
   return (
