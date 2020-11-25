@@ -18,7 +18,7 @@ describe('Item component', () => {
     const component = renderer.create(
       <Provider store={store}>
         <BrowserRouter>
-          <Item product={produto} />
+          <Item currentProduct={produto} />
         </BrowserRouter>
       </Provider>
     );

@@ -13,7 +13,7 @@ function Products(props) {
         dispatch({ type: 'LIST_PRODUCTS', products: results });
       })
       .catch((error) => console.log(error));
-  }, [products.data, dispatch]);
+  }, [dispatch]);
 
   function handleBatata(e) {
     console.log('handleBatata');
@@ -21,7 +21,7 @@ function Products(props) {
 
   return (
     <div>
-      Filtrar resultados
+      Pesquisar produto
       <input
         type="text"
         placeholder="Digite o código ou nome do produto"
