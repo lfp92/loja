@@ -21,12 +21,7 @@ function cartReducer(state = initialState, action = null) {
 
     case 'RESET_LIST':
       return { cartItems: [], total: 0 };
-
-    case 'EXPAND_CART':
-      return { ...state, expanded: true };
-
-    case 'COLLAPSE_CART':
-      return { ...state, expanded: false };
+      
     default:
       return state;
   }
