@@ -7,11 +7,11 @@ import './reset.css';
 import Routes from './components/Routes';
 
 ReactDOM.render(
-  <div>
+  <>
     <Provider store={store}>
       <Routes />
     </Provider>
-  </div>,
+  </>,
   document.getElementById('root')
 );
 
