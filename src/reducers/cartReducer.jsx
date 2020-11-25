@@ -1,5 +1,7 @@
 const initialState = {
   cartItems: [],
+  produtos: [],
+  valorTotal: 0.0,
   total: 0.0,
   expanded: false,
 };
