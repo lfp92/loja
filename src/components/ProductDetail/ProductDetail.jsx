@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProduct } from '../../services/products';
+import { getProduct } from '../../services/ProductService';
 import styled from 'styled-components';
 import Cart from '../Cart/Cart';
 

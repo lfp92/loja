@@ -9,7 +9,7 @@ async function getProduct(id = 0) {
   if (result) {
     return result;
   } else {
-    throw new Error('Produto não encontrado');
+    throw new Error('Item não encontrado');
   }
 }
 
