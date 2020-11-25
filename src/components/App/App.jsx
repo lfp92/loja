@@ -11,7 +11,7 @@ function App(props) {
       <main>
         <Products />
       </main>
-      <fotter />
+      <footer />
     </>
   );
 }
